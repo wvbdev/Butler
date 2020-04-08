@@ -12,6 +12,7 @@
 namespace WVBForum\Butler;
 
 use Flarum\Extend;
+use Flarum\Frontend\Document;
 
 return [
     (new Extend\Frontend('forum'))
