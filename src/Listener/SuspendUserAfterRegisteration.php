@@ -6,13 +6,11 @@ use Flarum\User\User;
 
 class GetInfo {
     function handleRegistrationEvent(Registered $event){
-        $registeredUser = $event->user;
-        return $registeredUser;
+        return $event->user;
     }
     public function returnUserInfo(){
         $registered = $this->handleRegistrationEvent();
-        $suspendUserName = $registered->username;
-        return $suspendUserName;
+        return $registered->username;
     }
 }
 class SuspendUser {
