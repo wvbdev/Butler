@@ -11,6 +11,7 @@
 
 namespace WVBForum\Butler;
 
+use Flarum\Bus\Dispatcher;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
 
@@ -19,4 +20,12 @@ return [
         ->content(function (Document $document) {
             $document->head[] = '<script>console.log("Hello, world!")</script>';
         })
+        ->js(__DIR__."/js/dist/forum.js"),
+
+    (new Extend\Frontend('admin'))
+        ->js(__DIR__.'/js/dist/admin.js'),
+
+    function (Dispatcher $events) {
+        
+    }
 ];
