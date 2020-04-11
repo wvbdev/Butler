@@ -5,12 +5,12 @@ namespace WvbForum\Butler\Listener;
 use Carbon\Carbon;
 use Flarum\Extension\ExtensionManager;
 use Flarum\Suspend\Event\Suspended;
-use WvbForum\Butler\Event\GetRegisteredInfo;
+use WvbForum\Butler\Event\GetRegisteredUser;
 
 class SuspendUserAfterRegistration {
     function SuspendRegisteredUser() {
         $manager = app(ExtensionManager::class);
-        $event = new GetRegisteredInfo();
+        $event = new GetRegisteredUser();
         $user = $event->rUser;
         $actor = $event->rActor;
 
