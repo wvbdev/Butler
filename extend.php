@@ -26,6 +26,6 @@ return [
         ->js(__DIR__.'/js/dist/admin.js'),
 
     function (Dispatcher $events) {
-        $events->subscribe(Listener\SuspendUserAfterRegisteration::class);
+        $events->subscribe(Listener\SuspendUserAfterRegistration::class);
     }
 ];

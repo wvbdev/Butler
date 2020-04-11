@@ -7,7 +7,7 @@ use Flarum\Extension\ExtensionManager;
 use Flarum\Suspend\Event\Suspended;
 use Flarum\User\Event\Registered;
 
-class SuspendUserAfterRegisteration {
+class SuspendUserAfterRegistration {
     function handleRegistrationEvent(Registered $event){
         return $event->user;
     }
