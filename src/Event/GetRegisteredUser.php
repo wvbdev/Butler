@@ -1,14 +1,15 @@
 <?php
 
 
-namespace WVBForum\Butler\Event;
-
+namespace WvbForum\Butler\Event;
 
 use Flarum\User\Event\Registered;
 
-class GetRegisteredUser
-{
+class GetRegisteredInfo {
+    public $rUser;
+    public $rActor;
     function handleRegistrationEvent(Registered $event){
-        return $event->user;
+        $this->rUser = $event->user;
+        $this->rActor = $event->actor;
     }
 }
