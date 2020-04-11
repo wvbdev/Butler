@@ -14,6 +14,8 @@ namespace WvbForum\Butler;
 use Illuminate\Contracts\Events\Dispatcher;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
+use WvbForum\Butler\Event;
+use WvbForum\Butler\Listener;
 
 return [
     (new Extend\Frontend('forum'))
@@ -24,4 +26,8 @@ return [
 
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
+
+    function (Dispatcher $events) {
+        $events->listen(Event\GetRegisteredUser::class, Listener\SuspendUserAfterRegistration::class);
+    }
 ];
