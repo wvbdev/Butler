@@ -11,5 +11,6 @@ class GetRegisteredUser {
     function handleRegistrationEvent(Registered $event){
         $this->rUser = $event->user;
         $this->rActor = $event->actor;
+        return Registered::class;
     }
 }
