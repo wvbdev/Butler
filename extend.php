@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace WVBForum\Butler;
+namespace WvbForum\Butler;
 
-use Flarum\Bus\Dispatcher;
+use Illuminate\Contracts\Events\Dispatcher;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
 
@@ -26,6 +26,6 @@ return [
         ->js(__DIR__.'/js/dist/admin.js'),
 
     function (Dispatcher $events) {
-        
+        $events->listen(Listener\SuspendUserAfterRegisteration::class);
     }
 ];

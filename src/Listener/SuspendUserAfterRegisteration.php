@@ -1,18 +1,24 @@
 <?php
 
-use Flarum\User\Event\Registered;
-use Flarum\Suspend\Listener;
-use Flarum\User\User;
+namespace WvbForum\Butler\Listener;
 
-class GetInfo {
+use Carbon\Carbon;
+use Flarum\Extension\ExtensionManager;
+use Flarum\Suspend\Event\Suspended;
+use Flarum\User\Event\Registered;
+
+class SuspendUserAfterRegisteration {
     function handleRegistrationEvent(Registered $event){
         return $event->user;
     }
-    public function returnUserInfo(){
-        $registered = $this->handleRegistrationEvent();
-        return $registered->username;
-    }
-}
-class SuspendUser {
+    function SuspendRegisteredUser() {
+        $manager = app(ExtensionManager::class);
+        $registeredUser = $this->handleRegistrationEvent();
+        $actor = null;
 
+        if ($manager->isEnabled('flarum-suspend')) {
+            $registeredUser->suspended_until = Carbon::parse('2038-01-01');
+            app('events')->dispatch(new Suspended($registeredUser, $actor));
+        }
+    }
 }
