@@ -9,8 +9,17 @@ use Flarum\User\Event\Registered;
 use Illuminate\Events\Dispatcher;
 
 class SuspendUserAfterRegistration {
+    /**
+     * @var Registered
+     */
     protected $registeredUser;
+    /**
+     * @var Registered
+     */
     protected $registeredActor;
+    /**
+     * @param Dispatcher $events
+     */
     protected $events;
     public function handleRegistrationEvent(Registered $event, Dispatcher $Event){
         $this->registeredUser = $event->user;
