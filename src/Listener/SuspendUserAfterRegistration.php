@@ -5,15 +5,12 @@ namespace WvbForum\Butler\Listener;
 use Carbon\Carbon;
 use Flarum\Extension\ExtensionManager;
 use Flarum\Suspend\Event\Suspended;
-use Flarum\User\Event\Registered;
+use WvbForum\Butler\Event\GetRegisteredUser;
 
 class SuspendUserAfterRegistration {
-    function handleRegistrationEvent(Registered $event){
-        return $event->user;
-    }
     function SuspendRegisteredUser() {
         $manager = app(ExtensionManager::class);
-        $registeredUser = $this->handleRegistrationEvent();
+        $registeredUser = GetRegisteredUser::class->handleRegistrationEvent();
         $actor = null;
 
         if ($manager->isEnabled('flarum-suspend')) {
