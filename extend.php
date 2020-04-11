@@ -32,6 +32,7 @@ return [
             $registered = new SuspendUserAfterRegistration();
             $registered->registeredUser = $event->user;
             $registered->registeredActor = $event->actor;
+            $registered;
         });
     }
 ];
