@@ -14,12 +14,12 @@ class SuspendUserAfterRegistration {
     /**
      * @var Registered
      */
-    private $registeredUser;
+    public $registeredUser;
 
     /**
      * @var Registered
      */
-    private $registeredActor;
+    public $registeredActor;
 
     /**
      * @param Dispatcher $events
@@ -41,7 +41,7 @@ class SuspendUserAfterRegistration {
         $this->registeredActor = $event->actor;
         $this->events = $Event;
     }
-    public function bootUserModal(User $user, User $actor){
+    public function __construct(User $user, User $actor){
         $this->registeredUser = $user;
         $this->registeredActor = $actor;
         $this->suspendedUser = $user;

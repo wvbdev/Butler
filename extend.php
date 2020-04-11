@@ -15,7 +15,7 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
 use Flarum\User\Event\Registered;
-use WvbForum\Butler\Listener;
+use WvbForum\Butler\Listener\SuspendUserAfterRegistration;
 
 return [
     (new Extend\Frontend('forum'))
@@ -28,6 +28,10 @@ return [
         ->js(__DIR__.'/js/dist/admin.js'),
 
     function (Dispatcher $events) {
-        $events->listen(Registered::class, Listener\SuspendUserAfterRegistration::class);
+        $events->listen(Registered::class, function (Registered $event) {
+            $registered = new SuspendUserAfterRegistration();
+            $registered->registeredUser = $event->user;
+            $registered->registeredActor = $event->actor;
+        });
     }
 ];
