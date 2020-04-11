@@ -18,7 +18,7 @@ class SuspendUserAfterRegistration {
         $manager = app(ExtensionManager::class);
 
         if ($manager->isEnabled('flarum-suspend')) {
-            $user->suspended_until = Carbon::parse('2038-01-01');
+            $this->registeredUser->suspended_until = Carbon::parse('2038-01-01');
             app('events')->dispatch(new Suspended($this->registeredUser, $this->registeredActor));
         }
     }
