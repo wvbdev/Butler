@@ -19,7 +19,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "WVBForum\\Butler\\": "src/"
+      "WvbForum\\Butler\\": "src/"
     }
   },
   "extra": {
