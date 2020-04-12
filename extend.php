@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of wvbforum/butler.
+ * This file is part of WvbForum/butler.
  *
  * Copyright (c) 2020 JC-ProPlus.
  *
@@ -20,7 +20,7 @@ use WvbForum\Butler\Listener\SuspendUserAfterRegistration;
 return [
     (new Extend\Frontend('forum'))
         ->content(function (Document $document) {
-            $document->head[] = '<script>console.log("Hello, world!")</script>';
+            $document->head[] = '<script>console.log("Horld!")</script>';
         })
         ->js(__DIR__."/js/dist/forum.js"),
 
@@ -30,9 +30,7 @@ return [
     function (Dispatcher $events) {
         $events->listen(Registered::class, function (Registered $event) {
             $registered = new SuspendUserAfterRegistration();
-            $registered->registeredUser = $event->user;
-            $registered->registeredActor = $event->actor;
-            $registered;
+            $registered->suspendRegisteredUser($event->user,$event->actor);
         });
     }
 ];

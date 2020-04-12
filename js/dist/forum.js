@@ -110,8 +110,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-app.initializers.add('wvbforum/butler', function () {
-  console.log('[wvbforum/butler] Hello, forum!');
+app.initializers.add('WvbForum/butler', function () {
+  console.log('[WvbForum/butler] Hello, forum!');
 });
 
 /***/ })

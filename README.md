@@ -1,6 +1,6 @@
 # Butler
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/wvbforum/butler.svg)](https://packagist.org/packages/wvbforum/butler)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/WvbForum/butler.svg)](https://packagist.org/packages/WvbForum/butler)
 
 A [Flarum](http://flarum.org) extension. Filter users by a third-party survey.
 
@@ -9,15 +9,15 @@ A [Flarum](http://flarum.org) extension. Filter users by a third-party survey.
 Use [Bazaar](https://discuss.flarum.org/d/5151-flagrow-bazaar-the-extension-marketplace) or install manually with composer:
 
 ```sh
-composer require wvbforum/butler
+composer require WvbForum/butler
 ```
 
 ### Updating
 
 ```sh
-composer update wvbforum/butler
+composer update WvbForum/butler
 ```
 
 ### Links
 
-- [Packagist](https://packagist.org/packages/wvbforum/butler)
+- [Packagist](https://packagist.org/packages/WvbForum/butler)

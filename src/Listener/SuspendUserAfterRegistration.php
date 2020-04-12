@@ -14,12 +14,12 @@ class SuspendUserAfterRegistration {
     /**
      * @var Registered
      */
-    public $registeredUser;
+    //public $registeredUser;
 
     /**
      * @var Registered
      */
-    public $registeredActor;
+    //public $registeredActor;
 
     /**
      * @param Dispatcher $events
@@ -29,30 +29,24 @@ class SuspendUserAfterRegistration {
     /**
      * @var User $user
      */
-    private $suspendedUser;
 
-    /**
-     * @var User $actor
-     */
-    private $suspendedActor;
-
-    public function handleRegistrationEvent(Registered $event, Dispatcher $Event){
+    /*public function handleRegistrationEvent(Registered $event, Dispatcher $Event){
         $this->registeredUser = $event->user;
         $this->registeredActor = $event->actor;
         $this->events = $Event;
-    }
-    public function __construct(User $user, User $actor){
+    }*/
+    /*public function __construct(User $user, User $actor){
         $this->registeredUser = $user;
         $this->registeredActor = $actor;
         $this->suspendedUser = $user;
         $this->suspendedActor = $actor;
-    }
-    public function suspendRegisteredUser() {
+    }*/
+    public function suspendRegisteredUser($suspendedUser,$suspendedActor) {
         $manager = app(ExtensionManager::class);
-
         if ($manager->isEnabled('flarum-suspend')) {
-            $this->registeredUser->suspended_until = Carbon::parse('2038-01-01');
-            app('events')->dispatch(new Suspended($this->suspendedUser, $this->suspendedActor));
+            $suspendedUser->suspended_until = Carbon::parse('2038-01-01');
+            //app('events')->dispatch(new Suspended($this->suspendedUser, $this->suspendedActor));
+            app('events')->dispatch(new Suspended($suspendedUser,$suspendedActor));
         }
     }
 }
