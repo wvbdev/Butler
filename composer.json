@@ -1,35 +1,35 @@
 {
-  "name": "WvbForum/butler",
-  "description": "Filter users by a third-party survey.",
-  "keywords": [
-    "flarum"
-  ],
-  "type": "flarum-extension",
-  "license": "MIT",
-  "require": {
-    "flarum/core": ">=0.1.0-beta.11 <0.1.0-beta.14",
-    "flarum/suspend": "^0.1.0@beta"
-  },
-  "authors": [
-    {
-      "name": "JC-ProPlus",
-      "email": "jcproplus@wvb.xyz",
-      "role": "Developer"
+    "name": "wvbforum/butler",
+    "description": "Filter users by a third-party survey.",
+    "keywords": [
+        "flarum"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": ">=0.1.0-beta.11 <0.1.0-beta.14",
+        "flarum/suspend": "^0.1.0@beta"
+    },
+    "authors": [
+        {
+            "name": "JC-ProPlus",
+            "email": "jcproplus@wvb.xyz",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WvbForum\\Butler\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Butler",
+            "icon": {
+                "name": "fas fa-user-tie",
+                "backgroundColor": "#2196F3",
+                "color": "#FFFFFF"
+            }
+        }
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "WvbForum\\Butler\\": "src/"
-    }
-  },
-  "extra": {
-    "flarum-extension": {
-      "title": "Butler",
-      "icon": {
-        "name": "fas fa-user-tie",
-        "backgroundColor": "#2196F3",
-        "color": "#FFFFFF"
-      }
-    }
-  }
 }
