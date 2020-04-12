@@ -14,7 +14,12 @@
         {
             "name": "JC-ProPlus",
             "email": "jcproplus@wvb.xyz",
-            "role": "Developer"
+            "role": "Developer&Manager"
+        },
+        {
+            "name": "2006bt",
+            "email": "m2006bt@outlook.com",
+            "role": "Developer&Manager"
         }
     ],
     "autoload": {
