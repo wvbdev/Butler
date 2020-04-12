@@ -31,7 +31,7 @@ class SuspendUserAfterRegistration {
      */
 
     /*public function handleRegistrationEvent(Registered $event, Dispatcher $Event){
-        $this->registeredUser = $event->user;
+        $this->registeredUser = $event->user;//
         $this->registeredActor = $event->actor;
         $this->events = $Event;
     }*/
