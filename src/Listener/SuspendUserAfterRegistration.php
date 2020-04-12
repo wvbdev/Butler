@@ -12,41 +12,26 @@ use Illuminate\Contracts\Events\Dispatcher;
 class SuspendUserAfterRegistration {
 
     /**
-     * @var Registered
+     * @var User
      */
-    //public $registeredUser;
+    public $suspendedUser;
 
     /**
-     * @var Registered
+     * @var User
      */
-    //public $registeredActor;
+    public $suspendedActor;
 
     /**
      * @param Dispatcher $events
      */
     protected $events;
 
-    /**
-     * @var User $user
-     */
-
-    /*public function handleRegistrationEvent(Registered $event, Dispatcher $Event){
-        $this->registeredUser = $event->user;//
-        $this->registeredActor = $event->actor;
-        $this->events = $Event;
-    }*/
-    /*public function __construct(User $user, User $actor){
-        $this->registeredUser = $user;
-        $this->registeredActor = $actor;
-        $this->suspendedUser = $user;
-        $this->suspendedActor = $actor;
-    }*/
-    public function suspendRegisteredUser($suspendedUser,$suspendedActor) {
+    public function suspendRegisteredUser($suspendedUser, $suspendedActor) {
         $manager = app(ExtensionManager::class);
         if ($manager->isEnabled('flarum-suspend')) {
             $suspendedUser->suspended_until = Carbon::parse('2038-01-01');
             //app('events')->dispatch(new Suspended($this->suspendedUser, $this->suspendedActor));
-            app('events')->dispatch(new Suspended($suspendedUser,$suspendedActor));
+            app('events')->dispatch(new Suspended($suspendedUser, $suspendedActor));
         }
     }
 }

@@ -30,7 +30,7 @@ return [
     function (Dispatcher $events) {
         $events->listen(Registered::class, function (Registered $event) {
             $registered = new SuspendUserAfterRegistration();
-            $registered->suspendRegisteredUser($event->user,$event->actor);
+            $registered->suspendRegisteredUser($event->user, $event->actor);
         });
     }
 ];
