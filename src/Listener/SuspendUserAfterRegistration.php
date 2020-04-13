@@ -11,19 +11,11 @@ use Illuminate\Contracts\Events\Dispatcher;
 
 class SuspendUserAfterRegistration {
 
-    /**
-     * @var User
-     */
-    public $suspendedUser;
-
-    /**
-     * @var User
-     */
-    public $suspendedActor;
-
     public function subscribe(Dispatcher $event) {
         $event->listen(Activated::class, function (Activated $events) {
-            $this->suspendActivatedUser($events->user,$events->user);
+            $user = User::class;
+            $admin = new User($attributes = [$user->id = 1]);
+            $this->suspendActivatedUser($events->user, $admin);
         });
     }
     
