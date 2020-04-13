@@ -35,7 +35,10 @@ class SuspendUserAfterRegistration {
                 $this->suspendedActor = $user;
             }
         }
-        return $this->suspendedActor;
+        function __construct(User $user) {
+            $this->suspendedUser = $user;
+        }
+        return [$this->suspendedActor, $this->suspendedUser];
     }
 
     public function suspendRegisteredUser($user, $actor) {
