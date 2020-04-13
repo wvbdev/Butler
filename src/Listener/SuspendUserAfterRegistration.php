@@ -24,6 +24,7 @@ class SuspendUserAfterRegistration {
     public function subscribe(Dispatcher $event) {
         $event->listen(Registered::class, function (Registered $events) {
             $this->suspendedUser = $events->user;
+            return $this->suspendedUser;
             $this->assignSuspendUser();
             $this->assignSuspendActor();
             $this->suspendRegisteredUser();
