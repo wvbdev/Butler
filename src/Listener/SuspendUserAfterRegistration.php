@@ -30,18 +30,14 @@ class SuspendUserAfterRegistration {
         });
     }
 
-    public function assignSuspendUser() {
-        function __construct(User $user) {
-            $this->suspendedUser = $user;
-        }
+    public function assignSuspendUser(User $user) {
+        $this->suspendedUser = $user;
         return $this->suspendedUser;
     }
 
-    public  function assignSuspendActor() {
-        function __construct(User $user) {
-            if ($user->id == 1) {
-                $this->suspendedActor = $user;
-            }
+    public  function assignSuspendActor(User $user) {
+        if ($user->id == 1) {
+            $this->suspendedActor = $user;
         }
         return $this->suspendedActor;
     }
