@@ -13,8 +13,7 @@ class SuspendUserAfterRegistration {
 
     public function subscribe(Dispatcher $event) {
         $event->listen(Activated::class, function (Activated $events) {
-            $user = User::class;
-            $admin = new User($attributes = [$user->id = 1]);
+            $admin = new User($attributes = [User::class->id = 1]);
             $this->suspendActivatedUser($events->user, $admin);
         });
     }
