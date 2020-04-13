@@ -25,10 +25,10 @@ class SuspendUserAfterRegistration {
         $event->listen(Registered::class, function (Registered $events) {
             $this->suspendedUser = $events->user;
             return $this->suspendedUser;
-            $this->assignSuspendUser();
-            $this->assignSuspendActor();
-            $this->suspendRegisteredUser();
         });
+        $this->assignSuspendUser();
+        $this->assignSuspendActor();
+        $this->suspendRegisteredUser();
     }
 
     public function assignSuspendUser(User $user) {
@@ -49,7 +49,6 @@ class SuspendUserAfterRegistration {
         $this->suspendedActor = $actor;
         if ($manager->isEnabled('flarum-suspend')) {
             $user->suspended_until = Carbon::parse('2038-01-01');
-            //app('events')->dispatch(new Suspended($this->suspendedUser, $this->suspendedActor));
             app('events')->dispatch(new Suspended($user, $actor));
         }
     }
