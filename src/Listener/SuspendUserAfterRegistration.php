@@ -24,21 +24,26 @@ class SuspendUserAfterRegistration {
     public function subscribe(Dispatcher $event) {
         $event->listen(Registered::class, function (Registered $events) {
             $this->suspendedUser = $events->user;
-            $this->assignSuspendUsers();
+            $this->assignSuspendUser();
+            $this->assignSuspendActor();
             $this->suspendRegisteredUser();
         });
     }
 
-    public function assignSuspendUsers() {
+    public function assignSuspendUser() {
+        function __construct(User $user) {
+            $this->suspendedUser = $user;
+        }
+        return $this->suspendedUser;
+    }
+
+    public  function assignSuspendActor() {
         function __construct(User $user) {
             if ($user->id == 1) {
                 $this->suspendedActor = $user;
             }
         }
-        function __construct(User $user) {
-            $this->suspendedUser = $user;
-        }
-        return [$this->suspendedActor, $this->suspendedUser];
+        return $this->suspendedActor;
     }
 
     public function suspendRegisteredUser($user, $actor) {
