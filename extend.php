@@ -28,9 +28,6 @@ return [
         ->js(__DIR__.'/js/dist/admin.js'),
 
     function (Dispatcher $events) {
-        $events->listen(Registered::class, function (Registered $event) {
-            $registered = new SuspendUserAfterRegistration();
-            $registered->suspendRegisteredUser($event->user, $event->actor);
-        });
+        $events->subscribe(SuspendUserAfterRegistration::class);
     }
 ];

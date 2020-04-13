@@ -21,17 +21,29 @@ class SuspendUserAfterRegistration {
      */
     public $suspendedActor;
 
-    /**
-     * @param Dispatcher $events
-     */
-    protected $events;
+    public function handleRegistrationEvent(Dispatcher $event) {
+        $event->listen(Registered::class, function (Registered $events) {
+            $this->suspendedUser = $events->user;
+        });
+    }
 
-    public function suspendRegisteredUser($suspendedUser, $suspendedActor) {
+    public function assignSuspendUsers() {
+        function __construct(User $user) {
+            if ($user->id == 1) {
+                $this->suspendedActor = $user;
+            }
+        }
+        return $this->suspendedActor;
+    }
+
+    public function suspendRegisteredUser($user, $actor) {
         $manager = app(ExtensionManager::class);
+        $this->suspendedUser = $user;
+        $this->suspendedActor = $actor;
         if ($manager->isEnabled('flarum-suspend')) {
-            $suspendedUser->suspended_until = Carbon::parse('2038-01-01');
+            $user->suspended_until = Carbon::parse('2038-01-01');
             //app('events')->dispatch(new Suspended($this->suspendedUser, $this->suspendedActor));
-            app('events')->dispatch(new Suspended($suspendedUser, $suspendedActor));
+            app('events')->dispatch(new Suspended($user, $actor));
         }
     }
 }
