@@ -23,27 +23,32 @@ class SuspendUserAfterRegistration {
 
     public function subscribe(Dispatcher $event) {
         $event->listen(Registered::class, function (Registered $events) {
+            $this->handleRegistrationEvent();
+            $this->assignSuspendUser();
+            $this->assignSuspendActor();
+            $this->suspendRegisteredUser();
+        });
+    }
+    function handleRegistrationEvent(Dispatcher $event) {
+        $event->listen(Registered::class, function (Registered $events) {
             $this->suspendedUser = $events->user;
             return $this->suspendedUser;
         });
-        $this->assignSuspendUser();
-        $this->assignSuspendActor();
-        $this->suspendRegisteredUser();
     }
 
-    public function assignSuspendUser(User $user) {
+    function assignSuspendUser(User $user) {
         $this->suspendedUser = $user;
         return $this->suspendedUser;
     }
 
-    public  function assignSuspendActor(User $user) {
+    function assignSuspendActor(User $user) {
         if ($user->id == 1) {
             $this->suspendedActor = $user;
         }
         return $this->suspendedActor;
     }
 
-    public function suspendRegisteredUser($user, $actor) {
+    function suspendRegisteredUser($user, $actor) {
         $manager = app(ExtensionManager::class);
         $this->suspendedUser = $user;
         $this->suspendedActor = $actor;
