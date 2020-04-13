@@ -22,7 +22,7 @@ class SuspendUserAfterRegistration {
     public $suspendedActor;
 
     public function subscribe(Dispatcher $event) {
-        $event->listen(Registered::class, function (Registered $events) {
+        $event->listen(Registered::class, function () {
             $this->handleRegistrationEvent();
             $this->assignSuspendUser();
             $this->assignSuspendActor();
