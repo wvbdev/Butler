@@ -14,7 +14,6 @@ namespace WvbForum\Butler;
 use Illuminate\Contracts\Events\Dispatcher;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
-use Flarum\User\Event\Registered;
 use WvbForum\Butler\Listener\SuspendUserAfterRegistration;
 
 return [
